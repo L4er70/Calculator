@@ -5,6 +5,7 @@ let addition=0;
 let sub = 0;
 let mult=0;
 let div=0;
+let result =0;
 let screen = document.querySelector('.screen');
 let numButton = document.querySelectorAll('.numbers')
 let screenContent = document.querySelector('.sectionContent')
@@ -43,7 +44,6 @@ clear.addEventListener('click',reset)
 
 
 
-
 opButton.forEach(button=>{
     button.addEventListener('click', function(){
        
@@ -64,6 +64,7 @@ opButton.forEach(button=>{
             para2.textContent+=button.id;
             val2=parseInt(para2.textContent);
             console.log('value 2 :'+val2);
+            
 
             }else{
                 para1.textContent+=button.id;
@@ -78,7 +79,15 @@ opButton.forEach(button=>{
 
 equal.addEventListener('click',function(){
     operate(operator,val1,val2)
+    val1=result;
+    para1.textContent = result;
+    para.textContent= '';
+    para2.textContent = '';
+    paraRes.textContent = '';
+    opBool=false;
+
     console.log(paraRes.textContent)
+    console.log('value 1 is :'+val1)
 
 })
     
@@ -88,7 +97,7 @@ equal.addEventListener('click',function(){
 
 
 function add(value1,value2){
-    let result = value1+value2;
+    result = value1+value2;
     addition=result;
     console.log('addition :'+addition);
     return result;
@@ -96,50 +105,44 @@ function add(value1,value2){
 
 
 function subtract(val1,val2){
-    let result = val1-val2;
+    result = val1-val2;
     sub=result
+    console.log('sub :'+sub)
     return result;
 }
 function multiply(val1,val2){
-    let result = val1*val2;
+    result = val1*val2;
     mult=result;
+    console.log('mult :'+mult)
     return result;
 }
 
 
-
 function divide(val1,val2){
-    let result = val1/val2;
+    result = val1/val2;
     div=result;
+    console.log('div :'+div)
     return result;    
 }
 
 function operate(operator,val1,val2) {
     if(operator==='+'){
         add(val1,val2)
-        return paraRes.textContent=addition;
+        return paraRes.textContent=' = '+result;
 
     }else if(operator==='-'){
         subtract(val1,val2)
-        return paraRes.textContent=sub;
+        return paraRes.textContent= ' = '+result;
     }
     else if(operator==='*'){
         multiply(val1,val2)
-        return paraRes.textContent=mult;
+        return paraRes.textContent=' = ' +result;
     }
     else if(operator==='/'){
         divide(val1,val2);
-        return paraRes.textContent=div;
+        return paraRes.textContent=' = '+result;
     }
     
+    
 }
-/*
-console.log(add(val1,val2));
-console.log(subtract(val1,val2));
-console.log(multiply(val1,val2));
-console.log(divide(val1,val2));
 
-
-console.log('the choesn operation is: '+operator+' and result is : '+operate(operator,val1,val2));
-
-*/
